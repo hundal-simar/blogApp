@@ -14,8 +14,9 @@ function Protected({children, authentication=true}){
         else if(!authentication && authStatus!==authentication){
             navigate('/')
         
-        setLoader(false);
+        
         }
+        setLoader(false);
     }
         ,[navigate, authStatus, authentication])
 

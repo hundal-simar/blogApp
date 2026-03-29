@@ -3,15 +3,15 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {Button, Input, RTE, Select} from "../index"
-import apprwriteService from "../../appwrite/configure"
+import appwriteService from "../../appwrite/configure"
 
 export default function PostForm({Post}){
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
-            title: post?.title || "",
-            slug: post?.$id || "",
-            content: post?.content || "",
-            status: post?.status || "active",
+            title: Post?.title || "",
+            slug: Post?.$id || "",
+            content: Post?.content || "",
+            status: Post?.status || "active",
         },
     });
 
@@ -19,14 +19,14 @@ export default function PostForm({Post}){
     const userData = useSelector((state) => state.auth.userData);
 
     const submit= async(data)=>{
-        if(post){
-            const file= data.image[0]? await apprwriteService.uploadFile(data.image[0]) : null;
+        if(Post){
+            const file= data.image[0]? await appwriteService.uploadFile(data.image[0]) : null;
 
             if(file){
-                apprwriteService.deleteFile(post.featuredImage);
+                appwriteService.deleteFile(Post.featuredImage);
             }
 
-            const dbPost = await appwriteService.updatePost(post.$id, {
+            const dbPost = await appwriteService.updatePost(Post.$id, {
                 ...data,
                 featuredImage: file ? file.$id : undefined,
             });
@@ -97,13 +97,13 @@ export default function PostForm({Post}){
                     type="file"
                     className="mb-4"
                     accept="image/png, image/jpg, image/jpeg, image/gif"
-                    {...register("image", { required: !post })}
+                    {...register("image", { required: !Post })}
                 />
-                {post && (
+                {Post && (
                     <div className="w-full mb-4">
                         <img
-                            src={appwriteService.getFilePreview(post.featuredImage)}
-                            alt={post.title}
+                            src={appwriteService.getFilePreview(Post.featuredImage)}
+                            alt={Post.title}
                             className="rounded-lg"
                         />
                     </div>
@@ -114,8 +114,8 @@ export default function PostForm({Post}){
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                    {post ? "Update" : "Submit"}
+                <Button type="submit" bgColor={Post ? "bg-green-500" : undefined} className="w-full">
+                    {Post ? "Update" : "Submit"}
                 </Button>
             </div>
         </form>

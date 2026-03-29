@@ -15,9 +15,9 @@ function Login(){
     const login= async(data)=>{
         try {
             setError("");
-            const session= await appwriteService.login(data)
+            const session= await appwriteService.logIn(data)
             if(session){
-                const userData= await appwriteService.getCurrentUser();
+                const userData= await appwriteService.getUser();
                 if(userData) dispatch(authLogin(userData));
                 navigate("/");
             }

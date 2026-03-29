@@ -8,10 +8,11 @@ function RTE({name, control, defaultValue="",label}){
             {label && <label className="inline-block mb-1 pl-1">{label}</label>}
 
             <Controller
-               name= { {name} || "content"}
+               name= { name || "content"}
                control={control}
-               render={ ({field:{onchange}})=> (
+               render={ ({field:{onChange}})=> (
                 <Editor
+                  apiKey="4b9njq684z1qqp404xktafjf5izqalsqplckp31yemxbn0ev"
                   initialValue= {defaultValue}
                   init={{
             initialValue: defaultValue,
@@ -43,7 +44,7 @@ function RTE({name, control, defaultValue="",label}){
             "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
             content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
         }}
-        onEditorChange={onchange}
+        onEditorChange={onChange}
 
                 />
                )

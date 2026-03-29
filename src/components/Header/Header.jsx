@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Container, Logo, logoutBtn } from "../index";
+import { Container, Logo, LogoutBtn } from "../index";
 
 function Header(){
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ function Header(){
                         
                             {authStatus && (
                                 <li>
-                                    <logoutBtn />
+                                    <LogoutBtn />
                                 </li>
                             )}
                        </ul>

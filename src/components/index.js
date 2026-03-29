@@ -1,7 +1,7 @@
 import Logo from "./logo";
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
-import logoutBtn from "./Header/logoutBtn";
+import LogoutBtn from "./Header/logoutBtn";
 import Button from "./Button";
 import Container from "./container/Container";
 import PostCard from "./PostCard";
@@ -10,6 +10,8 @@ import Select from "./Select";
 import Login from "./Login";
 import Signup from "./Signup";
 import RTE from "./RTE";
+import PostForm from "./Postform/PostForm";
+import Protected from "./AuthLayout";
 
 
-export { Logo, Header, Footer, logoutBtn, Button, Container, PostCard, Input, Select, Login, Signup, RTE };
+export { Logo, Header, Footer, LogoutBtn, Button, Container, PostCard, Input, Select, Login, Signup, RTE, PostForm, Protected };

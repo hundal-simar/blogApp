@@ -42,7 +42,7 @@ export class AuthService{
         try {
             return await this.account.get();
         } catch (error) {
-            console.log(error);
+            return null;
         }
         return null;
     }
