@@ -1,16 +1,78 @@
-# React + Vite
+# 📝 BlogApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured personal blog application built with **React** and **Appwrite** — supporting rich text editing, authentication, and global state management.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- 🔐 User Authentication — Login & Signup powered by Appwrite
+- ✍️ Rich Text Editor — Write posts using the TinyMCE editor
+- 📄 Create, Read, Update & Delete blog posts
+- 🗃️ Global State Management with Redux Toolkit
+- 📋 Form handling with React Hook Forms
+- 📦 Backend-as-a-Service via Appwrite (database, auth, storage)
+- 📱 Responsive design for mobile and desktop
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Layer            | Technology           |
+|------------------|----------------------|
+| Frontend         | React                |
+| Backend / BaaS   | Appwrite             |
+| State Management | Redux Toolkit        |
+| Forms            | React Hook Form      |
+| Rich Text Editor | TinyMCE              |
+| Routing          | React Router DOM     |
+
+---
+
+## 📁 Project Structure
+```
+blogApp/
+├── public/
+├── src/
+│   ├── appwrite/          # Appwrite config & service files
+│   ├── components/        # Reusable UI components
+│   ├── pages/             # Page-level components
+│   ├── store/             # Redux Toolkit store & slices
+│   ├── config/             # Accessing env variables
+│   ├── App.jsx
+│   └── main.jsx
+├── .env
+├── package.json
+└── README.md
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/hundal-simar/blogApp.git
+cd blogApp
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Configure environment variables
+
+Create a `.env` file and add:
+```env
+VITE_APPWRITE_URL=""
+VITE_APPWRITE_PROJECT_ID=""
+VITE_APPWRITE_DATABASE_ID=""
+VITE_APPWRITE_COLLECTION_ID=""
+VITE_APPWRITE_BUCKET_ID=""
+```
+
+### 4. Start the dev server
+```bash
+npm run dev
+```
