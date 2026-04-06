@@ -36,22 +36,22 @@ function Header(){
     ]
 
     return(
-        <header className="py-3 shadow bg-gray-500">
+        <header className="py-3 shadow bg-slate-900 text-white">
             <Container>
-                <nav className="flex">
-                       <div className="mr-4">
+                <nav className="flex w-full items-center justify-between bg-deep-navy-500">
+                       <div className="mr-4 mt-2">
                             <Link to="/"><Logo width="70 px"/></Link>
                        </div>
-                       <ul>
+                       <ul className="flex">
                         {navItems.map((item)=> item.active ? (
                             <li key={item.name}>
                                 <button onClick={()=> navigate(item.slug)}
-                                className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>{item.name}</button>
+                                className='inline-bock px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full'>{item.name}</button>
                             </li>
                         ): null )}
                         
                             {authStatus && (
-                                <li>
+                                <li >
                                     <LogoutBtn />
                                 </li>
                             )}

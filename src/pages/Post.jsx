@@ -11,7 +11,6 @@ export default function Post() {
     const navigate = useNavigate();
 
     const userData = useSelector((state) => state.auth.userData);
-
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
     useEffect(() => {
@@ -31,38 +30,50 @@ export default function Post() {
             }
         });
     };
-  console.log("isAuthor:", isAuthor);
-console.log("userData:", userData);
-console.log("post.userId:", post?.userId);
-    return post ? (
-        <div className="py-8">
-            <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
-                    <img
-                        src={appwriteService.getFilePreview(post.featuredImage)}
-                        alt={post.title}
-                        className="rounded-xl"
-                    />
 
-                    {isAuthor && (
-                        <div className="absolute right-6 top-6">
-                            <Link to={`/edit-post/${post.$id}`}>
-                                <Button bgColor="bg-green-500" className="mr-3">
-                                    Edit
-                                </Button>
-                            </Link>
-                            <Button bgColor="bg-red-500" onClick={deletePost}>
-                                Delete
-                            </Button>
-                        </div>
-                    )}
-                </div>
-                <div className="w-full mb-6">
-                    <h1 className="text-2xl font-bold">{post.title}</h1>
-                </div>
-                <div className="browser-css">
-                    {parse(post.content)}
+    return post ? (
+        <div className="min-h-screen bg-[#f5f0e8] py-10">
+            <Container>
+                <div className="max-w-3xl mx-auto">
+
+                    {/* Image */}
+                    <div className="relative w-full rounded-2xl overflow-hidden mb-8 border border-gray-100">
+                        <img
+                            src={appwriteService.getFilePreview(post.featuredImage)}
+                            alt={post.title}
+                            className="w-full object-contain max-h-[320px]"
+                        />
+                        {isAuthor && (
+                            <div className="absolute right-4 top-4 flex gap-2">
+                                <Link to={`/edit-post/${post.$id}`}>
+                                    <button className="px-4 py-2 bg-green-500 hover:bg-green-600 text-white text-sm font-medium rounded-lg transition-colors duration-200">
+                                        Edit
+                                    </button>
+                                </Link>
+                                <button
+                                    onClick={deletePost}
+                                    className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        )}
                     </div>
+
+                    {/* Title */}
+                    <h1 className="text-3xl font-bold text-slate-900 mb-6 leading-tight">
+                        {post.title}
+                    </h1>
+
+                    {/* Divider */}
+                    <div className="border-t border-gray-200 mb-6" />
+
+                    {/* Content */}
+                    <div className="prose max-w-none text-slate-700 leading-relaxed browser-css">
+                        {parse(post.content)}
+                    </div>
+
+                </div>
             </Container>
         </div>
     ) : null;
